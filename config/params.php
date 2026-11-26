@@ -29,6 +29,8 @@ return [
             'fuentes' => 'family=Oswald:wght@500;700&family=Inter:wght@400;500;600', 'oscuro' => true],
         'gala' => ['nombre' => 'Gala', 'desc' => 'Marfil, negro y dorado. Para casamientos y recepciones.',
             'fuentes' => 'family=Cormorant+Garamond:wght@600;700&family=Jost:wght@400;500;600', 'oscuro' => false],
+        'gala-noche' => ['nombre' => 'Gala Noche', 'desc' => 'Negro y dorado, serif fina. Para fiestas y cenas de noche.',
+            'fuentes' => 'family=Cormorant+Garamond:wght@600;700&family=Jost:wght@400;500;600', 'oscuro' => true],
         'campo' => ['nombre' => 'Campo', 'desc' => 'Papel, terracota y oliva. Cocina casera y regional.',
             'fuentes' => 'family=Bitter:wght@600;700&family=Nunito+Sans:wght@400;600;700', 'oscuro' => false],
         'mercado' => ['nombre' => 'Mercado', 'desc' => 'Verde y tomate, formas redondas. Fresco y alegre.',

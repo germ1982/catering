@@ -26,14 +26,23 @@ html[data-tema="parrilla"] .plato-foto { border-radius: var(--radio); }
     --portada: radial-gradient(circle at 50% 35%, rgba(212, 175, 95, .35), transparent 55%), linear-gradient(#17130f, #2b2319);
     --relleno: linear-gradient(135deg, #2b2319, #8a6d33);
 }
-html[data-tema="gala"] :is(h1, h2, h3) { font-weight: 600; letter-spacing: .015em; }
-html[data-tema="gala"] .btn { text-transform: uppercase; letter-spacing: .18em; font-size: .82rem; padding: .75rem 1.6rem; }
-html[data-tema="gala"] .titulo-bloque :is(h1, h2)::after { content: "◆"; height: auto; width: auto; background: none; color: var(--acento); font-size: .8rem; }
-html[data-tema="gala"] .bloque { padding: 6rem 0; }
-html[data-tema="gala"] .portada-texto::before { content: ""; position: absolute; inset: 1.25rem; border: 1px solid rgba(245, 226, 179, .55); outline: 1px solid rgba(245, 226, 179, .3); outline-offset: 5px; pointer-events: none; }
-html[data-tema="gala"] .portada-texto > .container { position: relative; }
-html[data-tema="gala"] :is(.fila-foto, .mosaico-pieza, .galeria button, .ficha-foto) { border: 1px solid var(--acento); padding: 6px; background: var(--superficie); }
-html[data-tema="gala"] .mosaico-pieza :is(img, .sin-foto) { inset: 6px; width: calc(100% - 12px); height: calc(100% - 12px); }
+html[data-tema^="gala"] :is(h1, h2, h3) { font-weight: 600; letter-spacing: .015em; }
+html[data-tema^="gala"] .btn { text-transform: uppercase; letter-spacing: .18em; font-size: .82rem; padding: .75rem 1.6rem; }
+html[data-tema^="gala"] .titulo-bloque :is(h1, h2)::after { content: "◆"; height: auto; width: auto; background: none; color: var(--acento); font-size: .8rem; }
+html[data-tema^="gala"] .bloque { padding: 6rem 0; }
+html[data-tema^="gala"] .portada-texto::before { content: ""; position: absolute; inset: 1.25rem; border: 1px solid rgba(245, 226, 179, .55); outline: 1px solid rgba(245, 226, 179, .3); outline-offset: 5px; pointer-events: none; }
+html[data-tema^="gala"] .portada-texto > .container { position: relative; }
+html[data-tema^="gala"] :is(.fila-foto, .mosaico-pieza, .galeria button, .ficha-foto) { border: 1px solid var(--acento); padding: 6px; background: var(--superficie); }
+html[data-tema^="gala"] .mosaico-pieza :is(img, .sin-foto) { inset: 6px; width: calc(100% - 12px); height: calc(100% - 12px); }
+
+/* Gala Noche: la misma elegancia de Gala sobre negro azulado, con dorado (comparte sus detalles) */
+[data-tema="gala-noche"] {
+    --fondo: #0f0e12; --fondo-alterno: #17151b; --superficie: #1e1b22; --texto: #f0e9da;
+    --primario: #d4af5f; --primario-texto: #17130c; --acento: #e3c27a; --linea: rgba(212, 175, 95, .3);
+    --fuente-titulos: 'Cormorant Garamond'; --fuente-texto: 'Jost'; --radio: 0px;
+    --portada: radial-gradient(circle at 50% 35%, rgba(212, 175, 95, .28), transparent 55%), linear-gradient(#08070a, #1c1813);
+    --relleno: linear-gradient(135deg, #1c1813, #7d6128);
+}
 
 /* 3. Campo: papel kraft, terracota y oliva, líneas cosidas */
 [data-tema="campo"] {
