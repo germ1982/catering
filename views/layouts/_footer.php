@@ -22,7 +22,9 @@ use yii\helpers\Url;
             </div>
         </div>
         <div class="pie-final">
-            <span>© <?= date('Y') ?> <?= Html::encode($sitio->nombre) ?></span>
+            <?= Html::a('&copy; G.E.R.M. Servicios En Informática ' . date('Y'), 'https://germ1982.github.io/germweb/', [
+                'target' => '_blank', 'rel' => 'noopener',
+            ]) ?>
             <?php if (Yii::$app->user->isGuest): ?>
                 <?= Html::a('<i class="bi bi-lock"></i> Ingresar', ['/site/ingresar'], ['rel' => 'nofollow']) ?>
             <?php endif; ?>
