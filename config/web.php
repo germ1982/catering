@@ -1,0 +1,111 @@
+<?php
+
+/** @var array $env datos de .env, cargados en web/index.php */
+
+$params = require __DIR__ . '/params.php';
+$db = require __DIR__ . '/db.php';
+
+// El sitio se sirve desde la raíz del proyecto aunque index.php esté en web/
+// (lo hace el .htaccess de la raíz), así que las URLs no llevan "/web".
+$baseUrl = rtrim(str_replace('\\', '/', dirname(dirname($_SERVER['SCRIPT_NAME'] ?? '/web/index.php'))), '/');
+
+$config = [
+    'id' => 'catering',
+    'name' => 'Mi Chef',
+    'basePath' => dirname(__DIR__),
+    'language' => 'es',
+    'sourceLanguage' => 'es',
+    'timeZone' => 'America/Argentina/Buenos_Aires',
+    'bootstrap' => ['log'],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
+    'components' => [
+        'request' => [
+            'cookieValidationKey' => $env['COOKIE_KEY'] ?? '',
+            'baseUrl' => $baseUrl,
+            // Detrás de un túnel o proxy local (cloudflared) los links salen con https y la IP real
+            'trustedHosts' => ['127.0.0.1', '::1'],
+        ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
+        // Formatos fijos: no dependen de la extensión intl (sin ella los meses salen en inglés)
+        'formatter' => [
+            'defaultTimeZone' => 'America/Argentina/Buenos_Aires',
+            'timeZone' => 'America/Argentina/Buenos_Aires',
+            'dateFormat' => 'php:d/m/Y',
+            'datetimeFormat' => 'php:d/m/Y H:i',
+            'timeFormat' => 'php:H:i',
+            'thousandSeparator' => '.',
+            'decimalSeparator' => ',',
+            'booleanFormat' => ['No', 'Sí'],
+            'nullDisplay' => '—',
+        ],
+        // ?v=fecha del archivo: al cambiar el CSS/JS los navegadores bajan la versión nueva
+        'assetManager' => [
+            'appendTimestamp' => true,
+        ],
+        'user' => [
+            'identityClass' => 'app\models\Usuario',
+            'enableAutoLogin' => true,
+            'loginUrl' => ['/site/ingresar'],
+            'identityCookie' => ['name' => '_catering_id', 'httpOnly' => true, 'sameSite' => 'Lax'],
+        ],
+        'session' => [
+            'name' => 'catering_sesion',
+            'cookieParams' => ['httponly' => true, 'samesite' => 'Lax'],
+        ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                    'except' => ['yii\web\HttpException:404'],
+                ],
+            ],
+        ],
+        'db' => $db,
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                '' => 'site/index',
+                'galeria' => 'site/galeria',
+                'nosotros' => 'site/nosotros',
+                'contacto' => 'site/contacto',
+                'ingresar' => 'site/ingresar',
+                'salir' => 'site/salir',
+                // Links para compartir: terminan en .jpg para que el filtro anti-robots de
+                // InfinityFree deje pasar a WhatsApp/Facebook (ver SiteController::actionTarjeta)
+                // (la del ítem va primero: si no, Yii armaría compartir.jpg?id=...)
+                'item/<id:\d+>-<slug:[\w\-]*>/foto.jpg' => 'site/tarjeta',
+                'compartir.jpg' => 'site/tarjeta',
+                'item/<id:\d+>-<slug:[\w\-]*>' => 'site/item',
+                'item/<id:\d+>' => 'site/item',
+                '<seccion:(comidas|servicios|eventos|alquiler|bebidas)>' => 'site/seccion',
+
+                'panel' => 'panel/item/index',
+                'panel/<controller:[\w\-]+>' => 'panel/<controller>/index',
+                'panel/<controller:[\w\-]+>/<action:[\w\-]+>' => 'panel/<controller>/<action>',
+            ],
+        ],
+    ],
+    'modules' => [
+        'panel' => ['class' => 'app\modules\panel\Module'],
+    ],
+    'params' => $params,
+];
+
+// Barra de depuración de Yii (el logo abajo a la derecha): solo si se pide en .env
+if (YII_ENV_DEV && !empty($env['DEBUG_TOOLBAR'])) {
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = ['class' => 'yii\debug\Module'];
+}
+
+return $config;
