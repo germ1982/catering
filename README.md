@@ -9,7 +9,8 @@ Yii2 basic, MySQL/MariaDB y Bootstrap 5.
 - **Carta** por grupos (Entradas, Principales, Postres…) con **"Tu pedido"**: el visitante agrega platos y bebidas y lo manda por WhatsApp. El pedido queda en su navegador; no se guarda en el servidor.
 - **Pedido de presupuesto** para eventos (tipo, fecha, personas, qué incluir), que también sale por WhatsApp.
 - Compartir por WhatsApp y Facebook con vista previa.
-- 5 estilos de color.
+- 5 estilos (Parrilla, Gala, Campo, Mercado y Ejecutivo). Solo quien inicia sesión puede cambiarlo, con el botón **Estilo**.
+- Reutilizable para otro negocio: nombre, textos, contacto, opciones del presupuesto, fotos y estilo están en la base, no en el código.
 
 Los botones de pedido y consulta por WhatsApp aparecen cuando se carga el número en el panel.
 
@@ -23,7 +24,8 @@ No hay roles: quien inicia sesión puede editar todo.
 | Banners de portada | Imágenes grandes (con versión para celular), textos y botón |
 | Textos y secciones | Título, subtítulo, texto, imagen, orden y visibilidad de cada bloque |
 | Galería | Fotos (varias a la vez o desde la cámara) |
-| Datos y estilo del sitio | Nombre, logo, contacto, redes y estilo |
+| Datos del sitio | Nombre, logo, contacto, redes y opciones del presupuesto |
+| Estilo del sitio | Selector con miniaturas de los 5 estilos |
 | Usuarios | Quiénes pueden entrar |
 
 ## Instalación en XAMPP

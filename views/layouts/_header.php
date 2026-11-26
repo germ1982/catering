@@ -48,8 +48,11 @@ foreach (Seccion::todas() as $clave => $s) {
                     <?php if (!Yii::$app->user->isGuest): ?>
                         <li class="nav-item ms-xl-2"><?= Html::a('<i class="bi bi-pencil-square"></i> Panel', ['/panel/item/index'], ['class' => 'btn btn-sm btn-primario']) ?></li>
                         <li class="nav-item">
+                            <button type="button" class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#estilos" title="Estilo" aria-label="Estilo"><i class="bi bi-palette"></i> <span class="d-xl-none">Estilo</span></button>
+                        </li>
+                        <li class="nav-item">
                             <?= Html::beginForm(['/site/salir'], 'post') ?>
-                            <?= Html::submitButton('<i class="bi bi-box-arrow-right"></i> Salir', ['class' => 'btn btn-link nav-link']) ?>
+                            <?= Html::submitButton('<i class="bi bi-box-arrow-right"></i> <span class="d-xl-none">Salir</span>', ['class' => 'btn btn-link nav-link', 'title' => 'Salir', 'aria-label' => 'Salir']) ?>
                             <?= Html::endForm() ?>
                         </li>
                     <?php endif; ?>

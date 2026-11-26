@@ -49,7 +49,8 @@ class Ajustes extends ActiveRecord
 
     public function rules()
     {
-        $textos = ['nombre', 'eslogan', 'descripcion', 'whatsapp', 'telefono', 'email', 'direccion', 'zona', 'horario', 'instagram', 'facebook'];
+        $textos = ['nombre', 'eslogan', 'descripcion', 'whatsapp', 'telefono', 'email', 'direccion', 'zona', 'horario', 'instagram', 'facebook',
+            'tipos_evento', 'extras_evento'];
 
         return array_merge([
             [$textos, 'trim'],
@@ -67,6 +68,7 @@ class Ajustes extends ActiveRecord
             ['instagram', 'match', 'pattern' => '/^[\w.]{1,60}$/', 'message' => 'Escribí solo el usuario de Instagram (ej. michef).'],
             ['facebook', 'url', 'defaultScheme' => 'https'],
             ['facebook', 'string', 'max' => 200],
+            [['tipos_evento', 'extras_evento'], 'string', 'max' => 2000],
             ['tema', 'in', 'range' => array_keys(Yii::$app->params['temas'])],
             [array_diff($textos, ['nombre']), 'default', 'value' => null],
         ], $this->reglasFotos());
@@ -88,7 +90,15 @@ class Ajustes extends ActiveRecord
             'instagram' => 'Instagram (usuario)',
             'facebook' => 'Facebook (link de la página)',
             'tema' => 'Estilo del sitio',
+            'tipos_evento' => 'Tipos de evento (uno por línea)',
+            'extras_evento' => 'Qué se puede incluir (uno por línea)',
         ];
+    }
+
+    /** @return string[] las líneas con texto de un campo de opciones (tipos_evento, extras_evento) */
+    public function opciones(string $campo): array
+    {
+        return array_values(array_filter(array_map('trim', preg_split('/\R/', (string)$this->$campo)), 'strlen'));
     }
 
     public function whatsappUrl(string $texto = ''): ?string

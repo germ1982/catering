@@ -1,30 +1,9 @@
-/* Sitio gastronómico. Cada estilo (data-tema) es un juego de variables. */
-
-:root, [data-tema="brasas"] {
-    --fondo: #16110f; --fondo-alterno: #1f1815; --superficie: #261d19; --texto: #f3e9df;
-    --primario: #d9692b; --primario-texto: #fff; --acento: #e9b872; --linea: rgba(233, 184, 114, .25);
-}
-[data-tema="gourmet"] {
-    --fondo: #fbf6ee; --fondo-alterno: #f3e9da; --superficie: #fffdf9; --texto: #33211d;
-    --primario: #7d1f2d; --primario-texto: #fff; --acento: #8a6420; --linea: rgba(125, 31, 45, .18);
-}
-[data-tema="huerta"] {
-    --fondo: #f8f7ef; --fondo-alterno: #eceedd; --superficie: #fff; --texto: #26301f;
-    --primario: #50692c; --primario-texto: #fff; --acento: #9c5a1e; --linea: rgba(80, 105, 44, .22);
-}
-[data-tema="fiesta"] {
-    --fondo: #140f24; --fondo-alterno: #1d1633; --superficie: #251d40; --texto: #f1ecfb;
-    --primario: #8b4fe0; --primario-texto: #fff; --acento: #f1c75b; --linea: rgba(241, 199, 91, .25);
-}
-[data-tema="fresco"] {
-    --fondo: #fff; --fondo-alterno: #fff4ea; --superficie: #fff; --texto: #28231f;
-    --primario: #c4520a; --primario-texto: #fff; --acento: #1f7a63; --linea: rgba(196, 82, 10, .2);
-}
+/* Sitio gastronómico: estructura común. Colores, letras y detalles de cada estilo en estilos.css */
 
 html[data-tema] {
     --bs-body-bg: var(--fondo); --bs-body-color: var(--texto); --bs-link-color: var(--acento);
     --bs-link-color-rgb: initial; --bs-link-hover-color: var(--primario); --bs-border-color: var(--linea);
-    --bs-body-font-family: 'Inter', system-ui, sans-serif; scroll-padding-top: 6rem;
+    --bs-body-font-family: var(--fuente-texto), system-ui, sans-serif; scroll-padding-top: 6rem;
 }
 body { background: var(--fondo); color: var(--texto); }
 a { color: var(--acento); text-decoration: none; }
@@ -33,7 +12,7 @@ h1, h2, h3, h4, .h3, .h4, .h5, .marca { font-family: var(--fuente-titulos), Geor
 .table { --bs-table-bg: transparent; }
 
 /* ---------- Botones ---------- */
-.btn { border-radius: 999px; }
+.btn { border-radius: var(--radio); }
 .btn-primario { background: var(--primario); border-color: var(--primario); color: var(--primario-texto); }
 .btn-primario:hover, .btn-primario:focus-visible { background: var(--primario); border-color: var(--primario); color: var(--primario-texto); filter: brightness(1.12); }
 .btn-contorno { border: 1px solid var(--acento); color: var(--acento); }
@@ -47,7 +26,12 @@ h1, h2, h3, h4, .h3, .h4, .h5, .marca { font-family: var(--fuente-titulos), Geor
 .marca > i { font-size: 1.8rem; color: var(--primario); }
 .marca img { width: 46px; height: 46px; object-fit: contain; border-radius: 50%; }
 .marca span { display: flex; flex-direction: column; line-height: 1.1; }
-.marca small { font: 500 .68rem 'Inter', sans-serif; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+.marca small { max-width: 17rem; margin-top: .15rem; font: 500 .72rem var(--fuente-texto), sans-serif; line-height: 1.3; letter-spacing: .02em; text-transform: none; white-space: normal; opacity: .75; }
+.navbar-brand.marca { min-width: 0; margin-right: .5rem; white-space: normal; }
+.navbar > .container { flex-wrap: wrap; }
+@media (min-width: 1200px) { .navbar > .container { flex-wrap: nowrap; } .navbar .nav-link { padding-inline: .4rem !important; font-size: .95rem; } }
+@media (max-width: 575px) { .navbar-brand.marca { max-width: calc(100% - 4.5rem); } }
+.navbar .nav-link { white-space: nowrap; }
 .navbar { --bs-navbar-color: var(--texto); --bs-navbar-hover-color: var(--primario); --bs-navbar-active-color: var(--primario); }
 .navbar-toggler { color: var(--texto); border-color: var(--linea); font-size: 1.4rem; }
 .nav-link.active { font-weight: 600; }
@@ -62,7 +46,7 @@ h1, h2, h3, h4, .h3, .h4, .h5, .marca { font-family: var(--fuente-titulos), Geor
 
 /* ---------- Portada ---------- */
 .portada, .portada .carousel-item { height: min(82vh, 720px); min-height: 460px; }
-.portada .carousel-item { background: radial-gradient(circle at 25% 20%, #a8461c, transparent 55%), radial-gradient(circle at 80% 85%, #6b1f2a, transparent 55%), #1c110d; }
+.portada .carousel-item { background: var(--portada); }
 .portada picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .portada-texto { position: absolute; inset: 0; display: grid; align-content: center; text-align: center; color: #fff; background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .62)); padding: 2rem 3rem; }
 .portada-texto h2 { font-size: clamp(2.2rem, 6vw, 4.4rem); text-shadow: 0 3px 18px rgba(0, 0, 0, .5); }
@@ -114,7 +98,7 @@ h1, h2, h3, h4, .h3, .h4, .h5, .marca { font-family: var(--fuente-titulos), Geor
 .agregar:hover { text-decoration: underline; }
 
 .grupos { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-bottom: 2rem; }
-.grupos a { border: 1px solid var(--linea); border-radius: 999px; padding: .35rem 1rem; }
+.grupos a { border: 1px solid var(--linea); border-radius: var(--radio); padding: .35rem 1rem; }
 .grupos a.activo { background: var(--primario); border-color: var(--primario); color: var(--primario-texto); }
 .grupo-titulo { display: flex; align-items: center; gap: 1rem; text-align: center; margin: 3rem 0 2rem; color: var(--acento); }
 .grupo-titulo::before, .grupo-titulo::after { content: ""; flex: 1; border-top: 1px solid var(--linea); }
@@ -122,7 +106,7 @@ h1, h2, h3, h4, .h3, .h4, .h5, .marca { font-family: var(--fuente-titulos), Geor
 /* ---------- Filas (especialidades y servicios) ---------- */
 .filas { display: grid; gap: 3rem; }
 .fila { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 3rem; }
-.fila-foto { display: block; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; }
+.fila-foto { display: block; aspect-ratio: 4 / 3; border-radius: var(--radio); overflow: hidden; }
 .fila:nth-child(even) .fila-foto { order: 2; }
 .fila-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
 .fila:hover .fila-foto img { transform: scale(1.05); }
@@ -131,7 +115,7 @@ h1, h2, h3, h4, .h3, .h4, .h5, .marca { font-family: var(--fuente-titulos), Geor
 
 /* ---------- Mosaico (eventos) ---------- */
 .mosaico { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
-.mosaico-pieza { position: relative; display: block; height: 340px; border-radius: 16px; overflow: hidden; color: #fff; }
+.mosaico-pieza { position: relative; display: block; height: 340px; border-radius: var(--radio); overflow: hidden; color: #fff; }
 .mosaico-pieza:hover { color: #fff; }
 .mosaico-pieza img, .mosaico-pieza > .sin-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
 .mosaico-pieza:hover img { transform: scale(1.07); }
@@ -139,19 +123,19 @@ h1, h2, h3, h4, .h3, .h4, .h5, .marca { font-family: var(--fuente-titulos), Geor
 .mosaico-texto strong { font: 700 1.4rem var(--fuente-titulos), serif; }
 .mosaico-texto span { font-size: .9rem; opacity: .9; }
 
-.sin-foto { display: grid; place-items: center; width: 100%; height: 100%; background: linear-gradient(135deg, #a8461c, #4a1a22); color: rgba(255, 255, 255, .75); font-size: 2.2rem; }
+.sin-foto { display: grid; place-items: center; width: 100%; height: 100%; background: var(--relleno); color: rgba(255, 255, 255, .75); font-size: 2.2rem; }
 .mosaico .sin-foto, .fila .sin-foto, .ficha-foto .sin-foto { font-size: 5rem; }
 .oculta { opacity: .5; }
 
 /* ---------- Ficha, galería, chef ---------- */
-.ficha-foto { display: block; width: 100%; aspect-ratio: 4 / 3; border: 0; padding: 0; background: none; border-radius: 18px; overflow: hidden; }
+.ficha-foto { display: block; width: 100%; aspect-ratio: 4 / 3; border: 0; padding: 0; background: none; border-radius: var(--radio); overflow: hidden; }
 .ficha-foto img { width: 100%; height: 100%; object-fit: cover; }
 .imagen-chef { border-radius: 200px 200px 18px 18px; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 .galeria { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(min(45%, 240px), 1fr)); }
 .galeria button { position: relative; border: 0; padding: 0; background: none; aspect-ratio: 1; border-radius: 12px; overflow: hidden; }
 .galeria img { width: 100%; height: 100%; object-fit: cover; }
 .galeria span { position: absolute; inset: auto 0 0; padding: 1.5rem .75rem .5rem; background: linear-gradient(transparent, rgba(0, 0, 0, .8)); color: #fff; font-size: .85rem; }
-.caja { background: var(--superficie); border: 1px solid var(--linea); border-radius: 16px; padding: 1.5rem; }
+.caja { background: var(--superficie); border: 1px solid var(--linea); border-radius: var(--radio); padding: 1.5rem; }
 
 /* ---------- WhatsApp y pedido ---------- */
 .whatsapp-flotante { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 1030; display: grid; place-items: center; width: 3.6rem; height: 3.6rem; border-radius: 50%; background: #1faf55; color: #fff; font-size: 1.9rem; box-shadow: 0 6px 20px rgba(0, 0, 0, .35); }
@@ -166,7 +150,7 @@ h1, h2, h3, h4, .h3, .h4, .h5, .marca { font-family: var(--fuente-titulos), Geor
 .pedido-total { font-weight: 600; text-align: right; }
 
 /* ---------- Panel ---------- */
-.menu-panel { display: flex; flex-direction: column; background: var(--superficie); border: 1px solid var(--linea); border-radius: 16px; padding: .5rem; }
+.menu-panel { display: flex; flex-direction: column; background: var(--superficie); border: 1px solid var(--linea); border-radius: var(--radio); padding: .5rem; }
 .menu-panel-titulo { padding: .75rem; font-weight: 600; border-bottom: 1px solid var(--linea); margin-bottom: .5rem; }
 .menu-panel-titulo small { display: block; font-weight: 400; opacity: .7; }
 .menu-panel-enlace { padding: .55rem .75rem; border-radius: 10px; color: var(--texto); }

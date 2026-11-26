@@ -1,0 +1,106 @@
+/*
+ * Los estilos del sitio. Cada uno define sus variables en [data-tema="..."] (sirven también
+ * para las miniaturas del selector) y sus detalles propios en html[data-tema="..."].
+ * Para sumar uno: su bloque acá y su entrada en config/params.php.
+ */
+
+/* 1. Parrilla: carbón y fuego, letras altas en mayúsculas, bordes rectos */
+[data-tema="parrilla"] {
+    --fondo: #121010; --fondo-alterno: #1c1715; --superficie: #231c19; --texto: #f3ece5;
+    --primario: #c8430f; --primario-texto: #fff; --acento: #ffb347; --linea: rgba(255, 179, 71, .24);
+    --fuente-titulos: 'Oswald'; --fuente-texto: 'Inter'; --radio: 3px;
+    --portada: radial-gradient(ellipse at 50% 115%, #e4551f, transparent 60%), radial-gradient(circle at 15% 20%, #3d1a0c, transparent 50%), #100c0b;
+    --relleno: linear-gradient(160deg, #3a2018, #c8430f);
+}
+html[data-tema="parrilla"] :is(h1, h2, h3, .marca, .mosaico-texto strong) { text-transform: uppercase; letter-spacing: .02em; }
+html[data-tema="parrilla"] .btn { text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+html[data-tema="parrilla"] .titulo-bloque :is(h1, h2)::after { height: 6px; width: 90px; background: linear-gradient(90deg, var(--primario), var(--acento)); }
+html[data-tema="parrilla"] .barra-superior { border-bottom: 3px solid var(--primario); }
+html[data-tema="parrilla"] .plato-foto { border-radius: var(--radio); }
+
+/* 2. Gala: marfil, negro y oro, serif fina; pensado para casamientos y recepciones */
+[data-tema="gala"] {
+    --fondo: #fbf8f1; --fondo-alterno: #f2ebdc; --superficie: #fffdf8; --texto: #262019;
+    --primario: #262019; --primario-texto: #f5e2b3; --acento: #86641c; --linea: rgba(134, 100, 28, .35);
+    --fuente-titulos: 'Cormorant Garamond'; --fuente-texto: 'Jost'; --radio: 0px;
+    --portada: radial-gradient(circle at 50% 35%, rgba(212, 175, 95, .35), transparent 55%), linear-gradient(#17130f, #2b2319);
+    --relleno: linear-gradient(135deg, #2b2319, #8a6d33);
+}
+html[data-tema="gala"] :is(h1, h2, h3) { font-weight: 600; letter-spacing: .015em; }
+html[data-tema="gala"] .btn { text-transform: uppercase; letter-spacing: .18em; font-size: .82rem; padding: .75rem 1.6rem; }
+html[data-tema="gala"] .titulo-bloque :is(h1, h2)::after { content: "◆"; height: auto; width: auto; background: none; color: var(--acento); font-size: .8rem; }
+html[data-tema="gala"] .bloque { padding: 6rem 0; }
+html[data-tema="gala"] .portada-texto::before { content: ""; position: absolute; inset: 1.25rem; border: 1px solid rgba(245, 226, 179, .55); outline: 1px solid rgba(245, 226, 179, .3); outline-offset: 5px; pointer-events: none; }
+html[data-tema="gala"] .portada-texto > .container { position: relative; }
+html[data-tema="gala"] :is(.fila-foto, .mosaico-pieza, .galeria button, .ficha-foto) { border: 1px solid var(--acento); padding: 6px; background: var(--superficie); }
+html[data-tema="gala"] .mosaico-pieza :is(img, .sin-foto) { inset: 6px; width: calc(100% - 12px); height: calc(100% - 12px); }
+
+/* 3. Campo: papel kraft, terracota y oliva, líneas cosidas */
+[data-tema="campo"] {
+    --fondo: #f5ecdc; --fondo-alterno: #eadcc1; --superficie: #fcf7ec; --texto: #3a2a1c;
+    --primario: #9c3d25; --primario-texto: #fff8ee; --acento: #4d6128; --linea: rgba(90, 62, 35, .35);
+    --fuente-titulos: 'Bitter'; --fuente-texto: 'Nunito Sans'; --radio: 10px;
+    --portada: radial-gradient(circle at 80% 20%, #b5652f, transparent 55%), linear-gradient(135deg, #3f2a19, #5d4326);
+    --relleno: linear-gradient(135deg, #8a5a32, #4d6128);
+}
+html[data-tema="campo"] body { background-image: radial-gradient(rgba(90, 62, 35, .09) 1px, transparent 1.5px); background-size: 14px 14px; }
+html[data-tema="campo"] :is(.caja, .menu-panel, .grupos a, .btn-contorno, .navbar-toggler) { border-style: dashed; }
+html[data-tema="campo"] :is(.puntos, .grupo-titulo::before, .grupo-titulo::after, .barra-superior, .pie) { border-style: dashed; }
+html[data-tema="campo"] .barra-superior { border-width: 0 0 2px; }
+html[data-tema="campo"] :is(.fila-foto, .mosaico-pieza, .galeria button) { border: 8px solid var(--superficie); box-shadow: 0 8px 22px rgba(58, 42, 28, .25); }
+html[data-tema="campo"] .fila:nth-child(odd) .fila-foto { transform: rotate(-1.2deg); }
+html[data-tema="campo"] .fila:nth-child(even) .fila-foto { transform: rotate(1.2deg); }
+html[data-tema="campo"] .titulo-bloque :is(h1, h2)::after { height: 0; width: 120px; background: none; border-top: 3px dashed var(--primario); }
+
+/* 4. Mercado: blanco, verde huerta y tomate, todo redondeado */
+[data-tema="mercado"] {
+    --fondo: #ffffff; --fondo-alterno: #ecf7ec; --superficie: #ffffff; --texto: #173022;
+    --primario: #1c7540; --primario-texto: #fff; --acento: #c23a19; --linea: rgba(28, 117, 64, .2);
+    --fuente-titulos: 'Fredoka'; --fuente-texto: 'Nunito'; --radio: 28px;
+    --portada: radial-gradient(circle at 12% 85%, #e2542f, transparent 42%), radial-gradient(circle at 90% 10%, #f2a93b, transparent 40%), linear-gradient(135deg, #12532d, #1c7540);
+    --relleno: linear-gradient(135deg, #1c7540, #8bbf45);
+}
+html[data-tema="mercado"] :is(.caja, .menu-panel) { box-shadow: 0 10px 30px rgba(23, 48, 34, .09); }
+html[data-tema="mercado"] .btn { font-weight: 700; }
+html[data-tema="mercado"] .titulo-bloque :is(h1, h2)::after { height: 9px; width: 60px; border-radius: 9px; background: var(--acento); }
+html[data-tema="mercado"] .plato { background: var(--superficie); border-radius: var(--radio); padding: 1rem; box-shadow: 0 6px 22px rgba(23, 48, 34, .1); }
+html[data-tema="mercado"] .puntos { border: 0; }
+html[data-tema="mercado"] .pasos li { background: var(--superficie); border-radius: var(--radio); padding: 1.5rem; box-shadow: 0 6px 22px rgba(23, 48, 34, .1); }
+html[data-tema="mercado"] .pasos li::before { background: var(--primario); color: var(--primario-texto); }
+html[data-tema="mercado"] .portada { border-radius: 0 0 48px 48px; overflow: hidden; }
+
+/* 5. Ejecutivo: azul y turquesa, sobrio y ordenado; pensado para empresas */
+[data-tema="ejecutivo"] {
+    --fondo: #f5f7fa; --fondo-alterno: #e9eef5; --superficie: #ffffff; --texto: #16253b;
+    --primario: #14487a; --primario-texto: #fff; --acento: #0a6f6a; --linea: rgba(20, 72, 122, .18);
+    --fuente-titulos: 'Sora'; --fuente-texto: 'Source Sans 3'; --radio: 8px;
+    --portada: linear-gradient(115deg, #0b1f36 0 55%, #14487a 55% 78%, #0a6f6a 78%);
+    --relleno: linear-gradient(135deg, #14487a, #0a6f6a);
+}
+html[data-tema="ejecutivo"] body { font-size: 1.05rem; }
+html[data-tema="ejecutivo"] :is(.barra-superior, .pie) { --texto: #eef4fb; --acento: #6fd6cd; --linea: rgba(255, 255, 255, .18); background: #0b1f36; color: var(--texto); }
+html[data-tema="ejecutivo"] :is(.barra-superior, .pie) { --primario: #6fd6cd; }
+html[data-tema="ejecutivo"] .barra-superior { border-bottom: 4px solid #0a6f6a; }
+html[data-tema="ejecutivo"] .barra-superior .btn-primario { --primario-texto: #0b1f36; }
+html[data-tema="ejecutivo"] .portada-texto { text-align: left; background: linear-gradient(90deg, rgba(6, 18, 33, .75), rgba(6, 18, 33, .2)); }
+html[data-tema="ejecutivo"] .portada-texto .justify-content-center { justify-content: flex-start !important; }
+html[data-tema="ejecutivo"] .portada-texto :is(h2, p) { max-width: 40rem; }
+html[data-tema="ejecutivo"] .titulo-bloque :is(h1, h2) { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+html[data-tema="ejecutivo"] .titulo-bloque :is(h1, h2)::after { width: 48px; height: 4px; background: var(--acento); }
+html[data-tema="ejecutivo"] :is(.caja, .menu-panel, .plato) { box-shadow: 0 2px 12px rgba(20, 37, 59, .08); }
+html[data-tema="ejecutivo"] .plato { background: var(--superficie); border-left: 4px solid var(--acento); border-radius: var(--radio); padding: 1rem; }
+html[data-tema="ejecutivo"] .plato-foto { border-radius: var(--radio); }
+
+/* ---------- Selector de estilo (usuarios logueados) ---------- */
+#estilos .modal-content { background: var(--superficie); color: var(--texto); }
+.estilos-grilla { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 195px), 1fr)); }
+.estilo-opcion { display: flex; flex-direction: column; gap: .4rem; width: 100%; height: 100%; text-align: left; border: 2px solid var(--linea); border-radius: 12px; padding: .6rem; background: none; color: var(--texto); }
+.estilo-opcion:hover, .estilo-opcion.activo { border-color: var(--primario); }
+.estilo-muestra { display: block; background: var(--fondo); color: var(--texto); border: 1px solid var(--linea); border-radius: 8px; overflow: hidden; }
+.estilo-muestra .m-portada { display: grid; place-items: center; height: 82px; background: var(--portada); color: #fff; font: 700 1.35rem var(--fuente-titulos), serif; }
+.estilo-muestra .m-cuerpo { display: flex; align-items: center; gap: .5rem; padding: .6rem; }
+.estilo-muestra .m-foto { width: 38px; height: 38px; border-radius: var(--radio); background: var(--relleno); }
+.estilo-muestra .m-texto { flex: 1; font: 700 .85rem var(--fuente-titulos), serif; line-height: 1.2; }
+.estilo-muestra .m-texto small { display: block; font: 400 .72rem var(--fuente-texto), sans-serif; color: var(--acento); }
+.estilo-muestra .m-boton { border-radius: var(--radio); padding: .2rem .6rem; background: var(--primario); color: var(--primario-texto); font: 600 .7rem var(--fuente-texto), sans-serif; }
+.estilo-desc { font-size: .82rem; opacity: .8; }

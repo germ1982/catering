@@ -17,7 +17,7 @@ $menu = [
     ['banner', 'bi-image', 'Banners de portada'],
     ['seccion', 'bi-card-text', 'Textos y secciones'],
     ['foto', 'bi-images', 'Galería'],
-    ['ajustes', 'bi-shop', 'Datos y estilo del sitio'],
+    ['ajustes', 'bi-shop', 'Datos del sitio'],
     ['usuario', 'bi-people', 'Usuarios'],
 ];
 ?>
@@ -35,6 +35,7 @@ $menu = [
                         'class' => 'menu-panel-enlace' . ($actual === $id ? ' activo' : ''),
                     ]) ?>
                 <?php endforeach; ?>
+                <button type="button" class="menu-panel-enlace border-0 bg-transparent text-start" data-bs-toggle="modal" data-bs-target="#estilos"><i class="bi bi-palette"></i> Estilo del sitio</button>
                 <?= Html::a('<i class="bi bi-eye"></i> Ver el sitio', ['/site/index'], ['class' => 'menu-panel-enlace']) ?>
             </nav>
         </aside>

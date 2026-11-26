@@ -11,7 +11,7 @@ $baseUrl = rtrim(str_replace('\\', '/', dirname(dirname($_SERVER['SCRIPT_NAME'] 
 
 $config = [
     'id' => 'catering',
-    'name' => 'Mi Chef',
+    'name' => 'Sitio gastronómico',
     'basePath' => dirname(__DIR__),
     'language' => 'es',
     'sourceLanguage' => 'es',

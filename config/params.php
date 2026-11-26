@@ -21,13 +21,19 @@ return [
     ],
 
     // Estilos del sitio: se elige uno en el panel y lo ven todos los visitantes.
-    // fuente: familia de Google Fonts para los títulos. oscuro: Bootstrap en modo dark.
-    'temaPredeterminado' => 'brasas',
+    // Los colores y detalles de cada uno están en web/css/estilos.css.
+    // fuentes: parámetros de Google Fonts. oscuro: Bootstrap en modo dark.
+    'temaPredeterminado' => 'parrilla',
     'temas' => [
-        'brasas' => ['nombre' => 'Brasas (oscuro y cálido)', 'fuente' => 'Playfair Display', 'oscuro' => true],
-        'gourmet' => ['nombre' => 'Gourmet (crema y bordó)', 'fuente' => 'Playfair Display', 'oscuro' => false],
-        'huerta' => ['nombre' => 'Huerta (verde oliva)', 'fuente' => 'Lora', 'oscuro' => false],
-        'fiesta' => ['nombre' => 'Fiesta (violeta y dorado)', 'fuente' => 'Poppins', 'oscuro' => true],
-        'fresco' => ['nombre' => 'Fresco (blanco y naranja)', 'fuente' => 'Poppins', 'oscuro' => false],
+        'parrilla' => ['nombre' => 'Parrilla', 'desc' => 'Carbón y fuego, letras fuertes. Para asados y brasas.',
+            'fuentes' => 'family=Oswald:wght@500;700&family=Inter:wght@400;500;600', 'oscuro' => true],
+        'gala' => ['nombre' => 'Gala', 'desc' => 'Marfil, negro y dorado. Para casamientos y recepciones.',
+            'fuentes' => 'family=Cormorant+Garamond:wght@600;700&family=Jost:wght@400;500;600', 'oscuro' => false],
+        'campo' => ['nombre' => 'Campo', 'desc' => 'Papel, terracota y oliva. Cocina casera y regional.',
+            'fuentes' => 'family=Bitter:wght@600;700&family=Nunito+Sans:wght@400;600;700', 'oscuro' => false],
+        'mercado' => ['nombre' => 'Mercado', 'desc' => 'Verde y tomate, formas redondas. Fresco y alegre.',
+            'fuentes' => 'family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700', 'oscuro' => false],
+        'ejecutivo' => ['nombre' => 'Ejecutivo', 'desc' => 'Azul y turquesa, sobrio. Para empresas y eventos corporativos.',
+            'fuentes' => 'family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600;700', 'oscuro' => false],
     ],
 ];
